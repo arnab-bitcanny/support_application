@@ -1,7 +1,9 @@
-<h2>New Comment</h2>
-<%= form_with model: [@ticket, @comment] do |form| %>
-  <div class="field">
-    <%= form.rich_text_area :content %>
-    <%= form.submit "Post" %>
-  </div>
+<%= turbo_frame_tag "new_comment" do %>
+  <h2>New Comment</h2>
+  <%= form_with model: [@ticket, @comment] do |form| %>
+    <div class="field">
+      <%= form.rich_text_area :content %>
+      <%= form.submit "Post" %>
+    </div>
+  <% end %>
 <% end %>

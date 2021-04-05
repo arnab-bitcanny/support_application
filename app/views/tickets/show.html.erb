@@ -11,4 +11,6 @@
   <%= render @ticket.comments.includes(:rich_text_content) %>
 </div>
 
-<%= link_to "New Comment", new_ticket_comment_path(@ticket) %>
+<% # link_to "New Comment", new_ticket_comment_path(@ticket) %>
+
+<%= turbo_frame_tag "new_comment", src: new_ticket_comment_path(@ticket), target: :_top %>
