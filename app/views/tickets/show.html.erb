@@ -1,12 +1,14 @@
-<h1><%= @ticket.title %></h1>
-<p><%= @ticket.content %></p>
+<%= turbo_frame_tag "ticket" do %>
+  <h1><%= @ticket.title %></h1>
+  <p><%= @ticket.content %></p>
 
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+  <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+  <%= link_to 'Back', tickets_path, 'data-turbo-frame': :_top %>
+<% end %>
 
 <div id="comments">
   <h3>Comments</h3>
-  <%= render @ticket.comments %>
+  <%= render @ticket.comments.includes(:rich_text_content) %>
 </div>
 
 <%= link_to "New Comment", new_ticket_comment_path(@ticket) %>
