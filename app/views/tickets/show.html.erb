@@ -1,7 +1,7 @@
-<%= turbo_frame_tag "ticket" do %>
-  <h1><%= @ticket.title %></h1>
-  <p><%= @ticket.content %></p>
+<%= turbo_stream_from @ticket %>
 
+<%= turbo_frame_tag "ticket" do %>
+  <%= render @ticket %>
   <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
   <%= link_to 'Back', tickets_path, 'data-turbo-frame': :_top %>
 <% end %>
