@@ -7,7 +7,10 @@ class CommentsController < ApplicationController
 
   def create 
     @comment = @ticket.comments.create(comment_params)
-    redirect_to @ticket
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to @ticket }
+    end
   end
 
   private
